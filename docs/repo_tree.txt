@@ -1,0 +1,75 @@
+meal-planner-saas/
+├── .github/
+│   └── workflows/
+│       ├── ci.yml                    # Run tests + lint on PRs
+│       └── deploy-preview.yml        # Vercel preview deployments
+├── docs/
+│   ├── curriculum/
+│   │   └── meal-planner-curriculum.md  # Your learning doc
+│   ├── architecture.md
+│   ├── database-schema.md
+│   └── api-contracts.md
+├── src/
+│   ├── app/                          # Next.js App Router
+│   │   ├── (auth)/
+│   │   │   ├── login/
+│   │   │   └── signup/
+│   │   ├── (app)/                    # Protected app routes
+│   │   │   ├── recipes/
+│   │   │   ├── pantry/
+│   │   │   ├── planner/
+│   │   │   ├── grocery-list/
+│   │   │   └── learn/                # Cooking fundamentals
+│   │   ├── api/
+│   │   │   ├── recipes/
+│   │   │   │   └── import/
+│   │   │   ├── planner/
+│   │   │   └── export/               # Pro feature
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   ├── components/
+│   │   ├── ui/                       # shadcn/ui components
+│   │   ├── recipes/
+│   │   ├── pantry/
+│   │   └── planner/
+│   ├── lib/
+│   │   ├── supabase/
+│   │   │   ├── client.ts             # Browser client
+│   │   │   ├── server.ts             # Server client
+│   │   │   └── middleware.ts         # Auth middleware
+│   │   ├── db/
+│   │   │   ├── queries.ts            # Typed queries
+│   │   │   └── types.ts              # DB types (generated)
+│   │   ├── parsers/
+│   │   │   └── recipe-schema.ts      # Schema.org parser
+│   │   ├── matchers/
+│   │   │   └── pantry-matcher.ts     # "What can I cook?"
+│   │   └── utils.ts
+│   ├── types/
+│   │   ├── recipe.ts
+│   │   ├── pantry.ts
+│   │   └── planner.ts
+│   └── styles/
+│       └── globals.css
+├── supabase/
+│   ├── migrations/
+│   │   ├── 00001_initial_schema.sql
+│   │   ├── 00002_rls_policies.sql
+│   │   └── 00003_cooking_content.sql
+│   ├── seed.sql                      # Sample recipes + lessons
+│   └── config.toml
+├── scripts/
+│   ├── generate-types.sh             # Supabase type gen
+│   └── seed-cooking-content.ts
+├── tests/
+│   ├── unit/
+│   ├── integration/
+│   └── e2e/
+├── .env.example
+├── .env.local
+├── .gitignore
+├── next.config.js
+├── package.json
+├── tsconfig.json
+├── tailwind.config.ts
+└── README.md
