@@ -1,45 +1,30 @@
-# Revised syllabus (non-AI SaaS)
+# Syllabus (12 modules)
 
-This syllabus uses CS2023 knowledge areas as the conceptual backbone for “how software works” and SWEBOK v4 as the practical backbone for “how software gets built, tested, shipped, and operated.”
+### **Materials**
+1. CS2023 organizes CS into knowledge areas (e.g., algorithms, data management, OS, networking, security, software engineering), which we’ll use as the backbone of what to learn.   
 
-Deliverables are PM-friendly: PRD slices, data contracts, threat-model notes, and “definition of done” checklists that you validate against what Cursor/Claude Code generates.
+2. SWEBOK v4 (latest; updated as v4.0a in Sep 2025) provides a consensus software engineering body of knowledge and explicitly integrates Agile/DevOps; it also adds Software Architecture, Software Engineering Operations, and Software Security as new knowledge areas. [ieeexplore.ieee](https://ieeexplore.ieee.org/document/10343447/)
 
-## Product requirements + NFRs
-**Core:** functional vs non-functional requirements, explicit constraints (latency, cost, availability), edge cases, acceptance criteria.​
-SWEBOK: Software Requirements; Software Engineering Management.​
+| Module | What you should understand (PM-level) | CS2023 anchors | SWEBOK v4 overlay | Free materials |
+|---|---|---|---|---|
+| 1. CS orientation + tooling | What “software” is as a layered system, how repos/branches/issues/releases fit together, why environments drift, what Docker is doing conceptually | SDF, SE, SF  | Configuration Management, Professional Practice  [ieeexplore.ieee](https://ieeexplore.ieee.org/document/10343447/) | OSSU is a curated, free CS curriculum that includes a “CS Tools” segment and emphasizes working in GitHub-style workflows.  [github](https://github.com/ossu/computer-science) |
+| 2. Programming models | How to reason about code without writing all of it: types vs runtime errors, state vs pure functions, interfaces/contracts, concurrency hazards at a conceptual level | FPL, SDF  | Construction, Quality  [ieeexplore.ieee](https://ieeexplore.ieee.org/document/10343447/) | OSSU’s core programming sequence explicitly covers design-for-testing, OOP/design patterns, and static vs dynamic typing.  [github](https://github.com/ossu/computer-science) |
+| 3. Data structures + algorithmic thinking | Big-O intuition, common structures (arrays/maps/trees/graphs), when a “simple” approach becomes a scaling problem, reading performance tradeoffs in PRDs | AL  | Requirements (NFRs), Quality  [ieeexplore.ieee](https://ieeexplore.ieee.org/document/10343447/) | OSSU’s “Core theory” track includes a full algorithms progression (divide-and-conquer → graphs → greedy/DP → NP-completeness).  [github](https://github.com/ossu/computer-science) |
+| 4. Data management (relational + operational) | Why schemas matter, normalization intuition, indexes, transactions and isolation, when to use relational vs document vs vector search; how data contracts break products | DM  | Requirements, Architecture, Operations  [ieeexplore.ieee](https://ieeexplore.ieee.org/document/10343447/) | OSSU includes a database sequence covering modeling/theory, relational SQL, and semistructured data.  [github](https://github.com/ossu/computer-science) |
+| 5. Computer architecture (just enough) | CPU/memory/storage mental models, latency sources, why “compute vs I/O bound” changes everything, what a VM/container abstracts | AR, SF  | Computing Foundations  [ieeexplore.ieee](https://ieeexplore.ieee.org/document/10343447/) | OSSU’s “Core systems” includes Nand2Tetris (from logic gates up), used to build intuition about how computers execute programs.  [github](https://github.com/ossu/computer-science) |
+| 6. Operating systems | Processes/threads, scheduling intuition, virtual memory, filesystems, syscalls, why resource leaks happen, what “load average” is actually signaling | OS  | Operations, Maintenance  [ieeexplore.ieee](https://ieeexplore.ieee.org/document/10343447/) | OSSU includes *Operating Systems: Three Easy Pieces* in its core systems path.  [github](https://github.com/ossu/computer-science) |
+| 7. Networking + distributed basics | HTTP basics, DNS/TLS intuition, timeouts/retries, idempotency, consistency vs availability tradeoffs, why “it works locally” fails in prod | NC, PDC  | Architecture, Operations, Security  [ieeexplore.ieee](https://ieeexplore.ieee.org/document/10343447/) | OSSU’s core systems includes a networking course (Top-Down Approach) and uses labs to build practical protocol intuition.  [github](https://github.com/ossu/computer-science) |
+| 8. Security fundamentals | Threat modeling mindset, authn/authz, secrets handling, injection classes, supply chain risks, least privilege, why security is a product feature not a checklist | SEC  | Software Security (new KA), Requirements  [ieeexplore.ieee](https://ieeexplore.ieee.org/document/10343447/) | OSSU has a “Core security” sequence and also lists a “Secure Software Development” series.  [github](https://github.com/ossu/computer-science) |
+| 9. Requirements → architecture | Turning messy goals into testable requirements, designing interfaces and boundaries, managing non-functional requirements (latency, cost, availability), avoiding “architecture astronaut” docs | SE, SDF, SF  | Requirements, Architecture (new KA), Design  [ieeexplore.ieee](https://ieeexplore.ieee.org/document/10343447/) | SWEBOK v4 explicitly elevates Architecture and ties it to operations/security as first-class concerns.  [ieeexplore.ieee](https://ieeexplore.ieee.org/document/10343447/) |
+| 10. Testing, quality, and release confidence | Unit/integration/e2e mental models, test pyramid intuition, what coverage can’t tell you, release strategies (feature flags, canary), what “done” means in engineering | SE, SDF  | Testing, Quality, Engineering Management  [ieeexplore.ieee](https://ieeexplore.ieee.org/document/10343447/) | OSSU’s core programming track emphasizes design for testing and unit testing as foundational skills.  [github](https://github.com/ossu/computer-science) |
+| 11. Reliability + observability (pragmatic SRE) | SLO/SLI basics, alerting vs paging, error budgets intuition, incident lifecycle, and how monitoring links to product decisions | PDC, SF  | Operations (new KA), Management  [ieeexplore.ieee](https://ieeexplore.ieee.org/document/10343447/) | Google’s free online *Site Reliability Engineering* book covers SLOs, monitoring, release engineering, and “eliminating toil” as core topics.  [sre](https://sre.google/sre-book/table-of-contents/) |
+| 12. AI features + lightweight LLM Ops | What “agent/tool/RAG” means, prompt/version control, evals, tracing/cost controls, and how to ship AI safely with fallback behaviors and human review | AI, SEP (ethics)  | Quality, Security, Professional Practice  [ieeexplore.ieee](https://ieeexplore.ieee.org/document/10343447/) | “Prompt Problems” formalizes prompt-based exercises as a way to learn programming concepts in the generative AI era.  [dl.acm](https://dl.acm.org/doi/pdf/10.1145/3626252.3630909) |
 
-## Domain modeling + data design
-**Core:** entities/relationships, invariants, relational schema basics, transactions, indexing intuition, auditability/event logging.​
-SWEBOK: Software Architecture (new KA), Software Design.​
+### How to use this as a PM
+Your goal isn’t to become a SWE; it’s to be able to (1) write crisp requirements, (2) evaluate tradeoffs, (3) spot risk early, and (4) communicate precisely with engineers.  
+CS2023 gives you the breadth of “what exists,” while SWEBOK v4 gives you the lifecycle and professional practices that determine whether software ships reliably. [ieeexplore.ieee](https://ieeexplore.ieee.org/document/10343447/)
 
-## Web architecture (Next.js mental model)
-**Core:** browser/server boundaries, SSR/CSR tradeoffs, routing, API surface design, caching concepts, error handling semantics.​
-SWEBOK: Architecture (new KA), Construction, Quality.​
-
-## Authentication + sessions (choose an approach)
-Option B (BaaS-native): Supabase Auth with Next.js App Router helpers (session handling patterns geared for Next.js).​
-SWEBOK: Security (new KA), Construction.​
-
-## Authorization (RBAC) + multi-tenancy
-**Core:** roles/permissions, workspace boundaries, “who can see what,” least privilege, admin flows, audit log requirements.​
-SWEBOK: Security (new KA), Architecture (new KA).​
-
-## Payments + subscriptions
-**Core:** pricing model decisions (trial, monthly/annual), checkout flow, webhooks, entitlement mapping (“paid plan unlocks features”), cancellations/refunds, customer portal.
-SWEBOK: Requirements, Operations (new KA), Management.​
-
-## Testing strategy (confidence, not perfection)
-**Core:** unit vs integration vs e2e mental models, test pyramid intuition, “what must never break” lists, regression prevention via CI gates.​
-SWEBOK: Software Testing; Software Quality.​
-
-## Release engineering + configuration
-**Core:** environments (dev/staging/prod), migrations, secrets, feature flags, versioning, rollbacks, Git/GitHub workflow discipline.​
-SWEBOK: Software Configuration Management; Operations (new KA).​
-
-## Observability + reliability basics
-**Core:** what to log, what to measure, basic SLO thinking, alerts that map to user impact, incident playbooks.​
-If you want a free, canonical reliability reference, Google’s SRE book is available online.​
-
-## Security baseline (practical checklists)
-**Core:** OWASP Top 10 awareness (common web app failure classes) and a “secure dev habits” checklist you can apply to every PR.​
-For process-level secure development practices, NIST’s SSDF (SP 800-218) is a free reference you can translate into lightweight “done criteria.”​
+### Free learning spine (minimal shopping list)
+If you want one coherent, free “playlist” to draw from, OSSU’s computer science curriculum is explicitly designed as a complete CS grounding using free online materials and includes tools, systems, theory, security, databases, and ethics. [github](https://github.com/ossu/computer-science)
+For reliability/production thinking, Google’s SRE book is freely available online and its table of contents highlights core operational concepts like SLOs, monitoring, automation, and release engineering. [sre](https://sre.google/sre-book/table-of-contents/)
+For a structured intro option that’s free to start, CS50 can be audited on edX at no cost (paid track is optional). [edx](https://www.edx.org/cs50)
